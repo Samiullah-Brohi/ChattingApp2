@@ -14,7 +14,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddCors();
 
 var app = builder.Build();
-
+// new changes
 app.UseCors(mycors => mycors.AllowAnyHeader().AllowAnyMethod()
 .WithOrigins("https://localhost:4200"));
 
