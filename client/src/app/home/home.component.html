@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div *ngIf="!registerMode" style="text-align: center">
+    <h1>Find your match</h1>
+    <p class="lead">
+      Come on into view your friends.... all you need to do is Sign up!
+    </p>
+    <div class="text-center">
+      <button (click)="registerToggle()" class="btn btn-primary btn-lg me-2">
+        Register
+      </button>
+      <button class="btn btn-primary btn-info btn-lg">Learn more</button>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register (cancelRegister)="cancelRegisterMode($event)">
+        </app-register>
+        <!-- 
+         <app-register
+          [usersFromParentHomeComponent]="users"
+          (cancelRegister)="cancelRegisterMode($event)"
+        >
+        </app-register>
+        [usersFromParentHomeComponent] this @input variable is declared in child register component for gettig input from parent
+        (cancelRegister) this @Output variable is declare in child register component for sending data to parent
+        while receving data from parent to child we use [usersFromParentHomeComponent]="users" 
+    while sending data to parent we use (cancelRegister)="cancelRegisterMode($event)" -->
+      </div>
+    </div>
+  </div>
+</div>
