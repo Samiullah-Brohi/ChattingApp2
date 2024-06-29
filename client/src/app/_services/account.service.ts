@@ -26,6 +26,7 @@ export class AccountService {
         if (myuser) {
           localStorage.setItem('sessionuser', JSON.stringify(myuser));
           this.CurrentUserObject.next(myuser);
+          //this.setCurrentUser(myuser);
         }
       })
     );
@@ -36,7 +37,6 @@ export class AccountService {
       map((user) => {
         if (user) {
           localStorage.setItem('sessionuser', JSON.stringify(user));
-          this.CurrentUserObject.next(user);
         }
         return user;
       })

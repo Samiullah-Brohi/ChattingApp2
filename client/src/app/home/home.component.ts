@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from '../_interfaces/User';
 
 @Component({
   selector: 'app-home',

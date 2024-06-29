@@ -1,0 +1,53 @@
+Before install/use see the versions compatablities of angular/node
+Install Angular with CLI
+Install Node
+ViSual Studio Code 
+VS Code extensions => C# Devkit,SQLLite(if needed) Nuget Package manager, Code Intellisense, Some configurations from settings menu for code editor
+VS Code from Nuget Packages Manager => System.IdentityModel.EntityFramecore.JWT, Mircosoft.Aspnet.EFCore
+
+
+For Themes, controls, forms of angular
+before install/use see the versions which matches with you angular
+https://valor-software.com/ngx-bootstrap/#/
+
+For Themes, controls, forms of bootstrap
+before install/use see the versions which matches with you angular
+https://getbootstrap.com/
+for adding css open angular.json and paste path at style tags
+
+Free themes for bootstrap
+https://bootswatch.com/
+npm install bootswatch 
+then add angular.json css reference
+
+tocken checker
+https://www.jwt.ms/
+tocken modifier
+https://www.jwt.io/
+
+Notify messages, dialog boxes on UI
+google ngx toastr
+find github link for library {also has demo} before install/use see the versions which matches with you angular
+npm install ngx-toastr@17
+for adding style css open angular.json and paste path at style tags
+toastr.css
+and in app.module will add
+ToastrModule.forRoot()
+
+ng g guard _guards/auth
+to prevent unauthorized uesrs to navigate to links
+in app.routing.module.ts add canActivate: [authGuard] 
+{ path: 'members', component: MemberListComponent, canActivate: [authGuard]  },
+
+
+create new module
+ng g module _module/shared --flat so that we can move all common and shared modules from app.module.ts to separate file, just for cleaning
+then add SharedModule name just in app.module.ts
+
+
+
+
+Learning resources
+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
+https://learn.microsoft.com/en-us/aspnet/mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
+https://www.c-sharpcorner.com/UploadFile/1492b1/restful-day-1-enterprise-level-application-architecture-wit/
