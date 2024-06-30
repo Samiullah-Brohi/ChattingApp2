@@ -35,7 +35,9 @@ export class NavComponent implements OnInit {
   login() {
     this.myaccountServices.login(this.model).subscribe({
       next: () => this.rout.navigateByUrl('/members'),
-      error: (error) => this.toastrMessages.error(error.error)
+
+      //error: (error) => this.toastrMessages.error(error.error)
+      // hide above line because now intercepter can work the same. for testing we can open this line
 
       // next: (response) => {
       //   this.rout.navigateByUrl('/members');

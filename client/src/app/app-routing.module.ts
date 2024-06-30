@@ -6,6 +6,9 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { authGuard } from './_guards/auth.guard';
+import { TestErrorsComponent } from './Errors/test-errors/test-errors.component';
+import { NotFoundComponent } from './Errors/not-found/not-found.component';
+import { ServerErrorComponent } from './Errors/server-error/server-error.component';
 
 // const routes: Routes = [ first method to use authguard to every one link
 //   { path: '', component: HomeComponent },
@@ -30,7 +33,10 @@ const routes: Routes = [
       { path: 'messages', component: MessagesComponent },
     ],
   },
-  { path: '**', component: HomeComponent, pathMatch: 'full' },
+  { path: 'Errors', component: TestErrorsComponent },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: 'server-error', component: ServerErrorComponent },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' }, // if type any wrong url page
 ];
 
 @NgModule({

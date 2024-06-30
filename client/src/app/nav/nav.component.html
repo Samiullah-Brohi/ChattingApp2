@@ -7,7 +7,7 @@
       currentUser$ | async make obserables to unsubscribe
       -->
     <!-- <ul   *ngIf="myaccountServices.currentUser$ | async" class="navbar-nav me-auto mb-2 mb-md-0"> -->
-    <ng-container *ngIf="myaccountServices.currentUser$ | async" >
+    <ng-container *ngIf="myaccountServices.currentUser$ | async">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
           <a
@@ -28,22 +28,27 @@
           >
         </li>
       </ul>
-
     </ng-container>
-    
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/Errors" routerLinkActive="active"
+          >Errors</a
+        >
+      </li>
+    </ul>
     <!-- *ngIf="myaccountServices.currentUser$ | async" -->
     <div
       class="dropdown"
       *ngIf="(myaccountServices.currentUser$ | async) as myuser"
       dropdown
     >
-<a class="dropdown-toggle text-light text-decoration-none" dropdownToggle
-        >Welcome {{ myuser.username | titlecase}}  </a>
+      <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle
+        >Welcome {{ myuser.username | titlecase }}
+      </a>
       <div class="dropdown-menu" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </div>
-      
     </div>
 
     <!-- // if we need not remove DOM then we will use hide [hidden] -->
