@@ -1,5 +1,9 @@
-﻿using API.Data;
+﻿using System.Collections.Generic;
+using API.Data;
+using API.DTOs;
 using API.Entities;
+using API.Interaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,29 +13,42 @@ namespace API.Controllers;
 [Authorize]
 public class UsersController : BaseApiController 
 {
-  private readonly DataContext _context;
+  private readonly IUsersRepository _userRepository;
+  private readonly IMapper _mapper;
 
-  public UsersController(DataContext context)
+  public UsersController(IUsersRepository repository, IMapper mapper)
   {
-        _context = context;
+        _userRepository = repository;
+        _mapper = mapper;
   }
-
-  [AllowAnonymous]
+  
   [HttpGet]
-  public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+  public async Task<ActionResult<IEnumerable<MemberDTO>>> GetUsers()
   {
-    var users =await _context.Users.ToListAsync();
-    return users;
+        return Ok(await _userRepository.GetMembersAsync());
+     // return await _userRepository.GetMembersAsync(); this line makes error due to actionresult so we should use OK()
+
+    //  var users = await _userRepository.GetUsersAsync();
+    //  var usersToReturn = _mapper.Map<IEnumerable<MemberDTO>>(users); 
+    //  mapper logic is shifted in repository using a second way
+    //  return Ok(usersToReturn);
   }
 
   
-  [HttpGet("{id}")]
-  public async Task<ActionResult<AppUser>> GetUser(int id)
+  [HttpGet("{username}")]
+  public async Task<ActionResult<MemberDTO>> GetUser(string username)
   {
-    var user = await _context.Users.FindAsync(id);
-    if(user == null) return NotFound();
-    
-    return user;
+
+      return await _userRepository.GetMemberAsync(username);
+
+   // var user =  await _userRepository.GetUesrByUserNameAsync(username);
+   // return _mapper.Map<MemberDTO>(user);
+   // we took this mapping logic to Repository
+
+
+   // var user = await _repository.GetUesrByUserName(username);
+   // if(user == null) return NotFound();
+   // return user;
   }
 
 

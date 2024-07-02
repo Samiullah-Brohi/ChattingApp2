@@ -1,5 +1,6 @@
 ﻿using API.Data;
 using API.Interaces;
+using API.Repositories;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +16,9 @@ public static class ApplicationServiceExtensions
     });
 
     Services.AddScoped<ITockenService, TockenService>();
-
-
+    Services.AddScoped<IUsersRepository, UsersRepository>();
+    Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    
     return Services;
   }
 }
